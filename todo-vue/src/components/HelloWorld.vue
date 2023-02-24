@@ -18,10 +18,6 @@ watch(() => props.msg, (newMsg) => {
 
 <template>
   <h1>{{ props.msg }}</h1>
-  <div class="card">
-    <button type="Button" @click="msg += '!'">Count Is {{ count }}</button>
-    <br>
-  </div>
 </template>
 
 <style scoped>

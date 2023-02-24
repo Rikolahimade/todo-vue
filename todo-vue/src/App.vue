@@ -1,7 +1,13 @@
 <script setup>
 import { ref } from 'vue';
 import HelloWorld from './components/HelloWorld.vue'
-const msg = ref("Belajar Vue JS");
+const msg = ref("Todo List");
+
+const data = {
+  title: 'Belajar',
+  deskripsi: 'ada kegiatan belajar pada hari ini',
+  waktu: '08.00'
+}
 </script>
 
 <template>
@@ -11,7 +17,29 @@ const msg = ref("Belajar Vue JS");
     </a>
   </div>
   <HelloWorld :msg='msg' />
-  <input type="text" v-model="msg">
+  <table>
+    <tr>
+      <th>No</th>
+      <th>Title</th>
+      <th>Deskripsi</th>
+      <th>waktu</th>
+      <th>Action</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>{{ data.title }}</td>
+      <td>{{ data.deskripsi }}</td>
+      <td>{{ data.waktu }}</td>
+      <td>
+        <button>Edit</button>
+        <button>Delete</button>
+      </td>
+    </tr>
+  </table>
+  <br>
+  <form action="">
+    <input class="new-todo" autofocus placeholder="Masukkan Jadwal?" size="20">
+  </form>
 </template>
 <style scoped>
 .logo {
@@ -38,12 +66,13 @@ table th,
 table td {
   border: 3px solid #ddd;
   padding: 8px;
-  text-align: left;
+  text-align: center;
 }
 
 table th {
   background-color: #f2f2f2;
   color: #555;
+
 }
 
 .active {
