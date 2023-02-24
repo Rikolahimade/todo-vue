@@ -7,7 +7,7 @@ const data = {
   title: 'Belajar',
   deskripsi: 'ada kegiatan belajar pada hari ini',
   waktu: '08.00'
-}
+};
 </script>
 
 <template>
@@ -17,12 +17,12 @@ const data = {
     </a>
   </div>
   <HelloWorld :msg='msg' />
-  <table>
+  <table border="1">
     <tr>
       <th>No</th>
       <th>Title</th>
       <th>Deskripsi</th>
-      <th>waktu</th>
+      <th>Waktu</th>
       <th>Action</th>
     </tr>
     <tr>
@@ -37,8 +37,14 @@ const data = {
     </tr>
   </table>
   <br>
-  <form action="">
-    <input class="new-todo" autofocus placeholder="Masukkan Jadwal?" size="20">
+  <form>
+    <input type="text" autofocus placeholder="Judul" size="20"/>
+    <br />
+    <input type="text" autofocus placeholder="Deskripsi" size="20" />
+    <br />
+    <input type="datetime" autofocus placeholder="Waktu" size="20" />
+    <br />
+    <button type="button">Add</button>
   </form>
 </template>
 <style scoped>
