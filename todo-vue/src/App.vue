@@ -1,4 +1,25 @@
 <script setup>
+//buat class todo
+
+import { reactive, watch, ref } from 'vue';
+import Todo from './model/todo';
+
+const form = reactive(new Todo());
+const data = ref([
+  new Todo()
+]);
+
+watch(form, () => {
+  console.log(form)
+})
+
+const deleteTodo = (index) => {
+  const result = confirm('Are You Sure?');
+  if (result) {
+    data.value.splice(index, 1);
+    alert('successfully')
+  }
+};
 
 </script>
 
@@ -8,34 +29,46 @@
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
-  <table border="1">
-    <tr>
-      <th>No</th>
-      <th>Title</th>
-      <th>Deskripsi</th>
-      <th>Waktu</th>
-      <th>Action</th>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>Judul</td>
-      <td>Deskripsi</td>
-      <td>Waktu</td>
-      <td>
-        <button>Edit</button>
-        <button>Delete</button>
-      </td>
-    </tr>
+  <table>
+    <tbody v-if="data.length > 0">
+      <tr>
+        <th>No</th>
+        <th>Title</th>
+        <th>Deskripsi</th>
+        <th>Waktu</th>
+        <th>Action</th>
+      </tr>
+      <tr v-for="(todo, index) in data" :key="index">
+        <td>{{ index + 1 }}</td>
+        <td>{{ todo.Title }}</td>
+        <td>{{ todo.Description }}</td>
+        <td>{{ todo.Waktu }}</td>
+        <td>
+          <button>Edit</button>
+          <button @click="deleteTodo
+            (index)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+    <tbody v-else>
+      <th>
+      <td coldspan="5">Empty data</td>
+      </th>
+    </tbody>
   </table>
+
   <br>
   <form>
-    <input type="text" autofocus placeholder="Judul" size="20" />
+    <input type="text" autofocus placeholder="Judul" size="20" v-model="form.Title
+    " />
     <br />
-    <input type="text" autofocus placeholder="Deskripsi" size="20" />
+    <input type="text" autofocus placeholder="Deskripsi" size="20" v-model="form.Deskripsi
+    " />
     <br />
-    <input type="datetime" autofocus placeholder="Waktu" size="20" />
+    <input type="datetime" autofocus placeholder="Waktu" size="20" v-model="form.Deadline
+    " />
     <br />
-    <button type="button">Add</button>
+    <button>Add</button>
   </form>
 </template>
 <style scoped>
@@ -57,7 +90,9 @@
 table {
   border-collapse: collapse;
   width: 100%;
+  border: 1px;
 }
+
 
 table th,
 table td {
