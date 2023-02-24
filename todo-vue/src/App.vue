@@ -1,13 +1,5 @@
 <script setup>
-import { ref } from 'vue';
-import HelloWorld from './components/HelloWorld.vue'
-const msg = ref("Todo List");
 
-const data = {
-  title: 'Belajar',
-  deskripsi: 'ada kegiatan belajar pada hari ini',
-  waktu: '08.00'
-};
 </script>
 
 <template>
@@ -16,7 +8,6 @@ const data = {
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
-  <HelloWorld :msg='msg' />
   <table border="1">
     <tr>
       <th>No</th>
@@ -27,9 +18,9 @@ const data = {
     </tr>
     <tr>
       <td>1</td>
-      <td>{{ data.title }}</td>
-      <td>{{ data.deskripsi }}</td>
-      <td>{{ data.waktu }}</td>
+      <td>Judul</td>
+      <td>Deskripsi</td>
+      <td>Waktu</td>
       <td>
         <button>Edit</button>
         <button>Delete</button>
@@ -38,7 +29,7 @@ const data = {
   </table>
   <br>
   <form>
-    <input type="text" autofocus placeholder="Judul" size="20"/>
+    <input type="text" autofocus placeholder="Judul" size="20" />
     <br />
     <input type="text" autofocus placeholder="Deskripsi" size="20" />
     <br />
